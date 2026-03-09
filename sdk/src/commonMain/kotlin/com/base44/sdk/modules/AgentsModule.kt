@@ -17,7 +17,7 @@ import kotlinx.serialization.json.*
  * println(updated.messages?.last()?.content)
  * ```
  */
-class AgentsModule(
+class AgentsModule internal constructor(
     private val http: Base44HttpClient,
     private val appId: String,
 ) {

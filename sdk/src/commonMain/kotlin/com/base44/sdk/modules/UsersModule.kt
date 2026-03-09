@@ -4,7 +4,7 @@ import com.base44.sdk.http.Base44HttpClient
 import kotlinx.serialization.json.*
 
 /** Lists and manages users in your Base44 app. */
-class UsersModule(
+class UsersModule internal constructor(
     private val http: Base44HttpClient,
     private val appId: String,
 ) {
@@ -23,6 +23,6 @@ class UsersModule(
             put("user_email", email)
             put("role", role)
         }
-        return http.post("/apps/$appId/users/invite-user", body).jsonObject
+        return http.post("/apps/$appId/runtime/users/invite-user", body).jsonObject
     }
 }

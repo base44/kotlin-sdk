@@ -17,7 +17,7 @@ import kotlinx.serialization.json.*
  * val order = base44.entities["Orders"].get("order-id")
  * ```
  */
-class EntitiesModule(
+class EntitiesModule internal constructor(
     private val http: Base44HttpClient,
     private val appId: String,
 ) {
@@ -28,7 +28,7 @@ class EntitiesModule(
 /**
  * Provides CRUD and query operations for a specific entity type.
  */
-class EntityHandler(
+class EntityHandler internal constructor(
     private val http: Base44HttpClient,
     private val appId: String,
     private val entityName: String,

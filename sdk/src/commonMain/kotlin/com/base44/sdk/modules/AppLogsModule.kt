@@ -4,7 +4,7 @@ import com.base44.sdk.http.Base44HttpClient
 import kotlinx.serialization.json.*
 
 /** Lists application log entries from your Base44 app. */
-class AppLogsModule(
+class AppLogsModule internal constructor(
     private val http: Base44HttpClient,
     private val appId: String,
 ) {
@@ -14,6 +14,6 @@ class AppLogsModule(
             limit?.let { put("limit", it.toString()) }
             skip?.let { put("skip", it.toString()) }
         }
-        return http.get("/apps/$appId/app-logs", params).jsonArray.map { it.jsonObject }
+        return http.get("/app-logs/$appId", params).jsonArray.map { it.jsonObject }
     }
 }

@@ -19,7 +19,7 @@ import kotlinx.serialization.json.*
  * val response = base44.integrations.invoke("MyPackage", "MyEndpoint", buildJsonObject { put("param", "val") })
  * ```
  */
-class IntegrationsModule(
+class IntegrationsModule internal constructor(
     private val http: Base44HttpClient,
     private val appId: String,
 ) {
@@ -72,7 +72,7 @@ class IntegrationsModule(
 }
 
 /** Typed wrappers for Base44 Core integration endpoints. */
-class CoreIntegrations(
+class CoreIntegrations internal constructor(
     private val http: Base44HttpClient,
     private val appId: String,
 ) {

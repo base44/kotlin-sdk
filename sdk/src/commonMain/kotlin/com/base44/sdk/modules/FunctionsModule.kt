@@ -12,7 +12,7 @@ import kotlinx.serialization.json.*
  * val result = base44.functions.invoke("sendWelcomeEmail", buildJsonObject { put("userId", "abc") })
  * ```
  */
-class FunctionsModule(
+class FunctionsModule internal constructor(
     private val http: Base44HttpClient,
     private val appId: String,
 ) {

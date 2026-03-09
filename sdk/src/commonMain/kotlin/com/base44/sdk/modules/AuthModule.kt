@@ -13,7 +13,7 @@ import kotlinx.serialization.json.*
  * val me = base44.auth.me()
  * ```
  */
-class AuthModule(
+class AuthModule internal constructor(
     private val http: Base44HttpClient,
     private val functionsHttp: Base44HttpClient,
     private val appId: String,
