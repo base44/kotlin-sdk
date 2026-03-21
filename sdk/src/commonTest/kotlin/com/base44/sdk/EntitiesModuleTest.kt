@@ -226,10 +226,10 @@ class HttpClientTest {
     }
 
     @Test
-    fun testXAppIdHeaderSent() = runTest {
+    fun testCustomHeadersForwarded() = runTest {
         val mockEngine = MockEngine { request ->
-            val appId = request.headers["X-App-Id"]
-            assertEquals("my-app-123", appId)
+            val customHeader = request.headers["X-Custom-Header"]
+            assertEquals("my-value-123", customHeader)
             respond(
                 content = ByteReadChannel("{}"),
                 status = HttpStatusCode.OK,
@@ -238,7 +238,7 @@ class HttpClientTest {
         }
         val client = Base44HttpClient(
             baseUrl = "https://base44.app/api",
-            initialHeaders = mapOf("X-App-Id" to "my-app-123"),
+            initialHeaders = mapOf("X-Custom-Header" to "my-value-123"),
             httpClient = HttpClient(mockEngine),
         )
         client.get("/test")

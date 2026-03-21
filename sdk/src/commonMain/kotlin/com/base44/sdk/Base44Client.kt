@@ -131,7 +131,7 @@ class ServiceRoleClient internal constructor(
  */
 fun createClient(config: CreateClientConfig): Base44Client {
     val baseUrl = "${config.serverUrl}/api"
-    val baseHeaders = config.headers + mapOf("X-App-Id" to config.appId)
+    val baseHeaders = config.headers
     val functionHeaders = if (config.functionsVersion != null)
         baseHeaders + mapOf("Base44-Functions-Version" to config.functionsVersion)
     else baseHeaders
